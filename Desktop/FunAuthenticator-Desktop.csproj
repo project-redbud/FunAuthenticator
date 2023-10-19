@@ -6,10 +6,11 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Milimoe.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <RootNamespace>Milimoe.FunAuthenticator</RootNamespace>
     <Authors>Milimoe</Authors>
     <Company>Milimoe</Company>
-    <Title>FunAuthenticator</Title>
+    <Title>FunAuthenticator-Desktop</Title>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -21,8 +22,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="FunGame.Core">
-      <HintPath>..\FunGame.Core\bin\Debug\net7.0\FunGame.Core.dll</HintPath>
+      <HintPath>..\..\FunGame.Core\bin\Debug\net7.0\FunGame.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
 

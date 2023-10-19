@@ -1,6 +1,6 @@
 using Milimoe.FunGame.Core.Api.Utility;
 
-namespace Milimoe.FunAuthenticator
+namespace Milimoe.FunAuthenticator.Desktop
 {
     public partial class FunAuthenticator : Form
     {
@@ -32,15 +32,19 @@ namespace Milimoe.FunAuthenticator
             CodeText.Text = code;
             int now = DateTime.UtcNow.Second;
             if (now > 30) now -= 30;
-            RemindText.Text = " £”‡ " + (30 - now == 0 ? 30 : (30 - now)) + " √Î";
+            int remain = (30 - now == 0 ? 30 : (30 - now));
+            RemainText.Text = " £”‡ " + remain + " √Î";
+            Timer.Value = remain < 0 ? 30 : remain;
             while (true)
             {
                 await Task.Delay(1000);
                 now++;
-                RemindText.Text = " £”‡ " + (30 - now) + " √Î";
+                remain = (30 - now);
+                RemainText.Text = " £”‡ " + remain + " √Î";
+                Timer.Value = remain < 0 ? 30 : remain;
                 if (30 - now <= 0)
                 {
-                    RemindText.Text = "π˝∆⁄";
+                    RemainText.Text = "π˝∆⁄";
                     break;
                 }
             }

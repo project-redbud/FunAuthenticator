@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>FunAuthenticator_Console</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Milimoe.FunAuthenticator.Console</RootNamespace>
+    <Authors>Milimoe</Authors>
+    <Company>Milimoe</Company>
+    <Title>FunAuthenticator-Console</Title>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FunGame.Core">
+      <HintPath>..\..\FunGame.Core\bin\Debug\net7.0\FunGame.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,4 +1,4 @@
-namespace Milimoe.FunAuthenticator
+namespace Milimoe.FunAuthenticator.Desktop
 {
     internal static class Program
     {
