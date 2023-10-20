@@ -58,7 +58,8 @@
             // Timer1
             // 
             Timer.Location = new Point(12, 127);
-            Timer.Maximum = 30;
+            Timer.Maximum = 300;
+            Timer.Value = 300;
             Timer.Name = "Timer";
             Timer.Size = new Size(313, 23);
             Timer.Step = 1;
