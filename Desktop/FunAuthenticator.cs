@@ -28,52 +28,58 @@ namespace Milimoe.FunAuthenticator.Desktop
 
         public async Task NewCode(string key)
         {
-            string code = TwoFactorAuthenticator.GenerateCode(key);
-            CodeText.Text = code;
             int now = DateTime.UtcNow.Second;
-            if (now > 30) now -= 30;
-            int remain = (30 - now == 0 ? 30 : (30 - now));
-            RemainText.Text = " £”‡ " + remain + " √Î";
-            Timer.Value = remain < 0 ? 30 : remain;
+            now %= 30;
+            int remain = 30 - now < 0 ? 30 : 30 - now;
+            RemainText.Text = "Ââ©‰Ωô " + remain + " Áßí";
+            Timer.Value = remain * 10 < 0 ? 300 : remain * 10;
+            CodeText.Text = TwoFactorAuthenticator.GenerateCode(key);
             while (true)
             {
-                await Task.Delay(1000);
-                now++;
-                remain = (30 - now);
-                RemainText.Text = " £”‡ " + remain + " √Î";
-                Timer.Value = remain < 0 ? 30 : remain;
-                if (30 - now <= 0)
+                now = DateTime.UtcNow.Second;
+                now %= 30;
+                remain = 30 - now < 0 ? 0 : 30 - now;
+                RemainText.Text = "Ââ©‰Ωô " + remain + " Áßí";
+                Timer.Value = remain * 10 < 0 ? 0 : remain * 10;
+                for (int i = 0; i < 10; i++)
                 {
-                    RemainText.Text = "π˝∆⁄";
+                    Timer.Value = Timer.Value - 1 < 0 ? 0 : (Timer.Value - 1);
+                    await Task.Delay(92);
+                }
+                now++;
+                remain = 30 - now < 0 ? 0 : 30 - now;
+                if (remain <= 0)
+                {
+                    RemainText.Text = "ËøáÊúü";
                     break;
                 }
             }
         }
 
-        const string publicpath = "public.key"; // π´‘ø£®√‹Œƒ£©Œƒº˛¬∑æ∂
-        const string privatepath = "private.key"; // ÀΩ‘øŒƒº˛¬∑æ∂
-        private string key = ""; // —È÷§√ÿ‘ø
+        const string publicpath = "public.key"; // ÂÖ¨Èí•ÔºàÂØÜÊñáÔºâÊñá‰ª∂Ë∑ØÂæÑ
+        const string privatepath = "private.key"; // ÁßÅÈí•Êñá‰ª∂Ë∑ØÂæÑ
+        private string key = ""; // È™åËØÅÁßòÈí•
 
         private bool CheckKey()
         {
             if (File.Exists(privatepath) && File.Exists(publicpath))
             {
-                // ∂¡»°º”√‹µƒ√ÿ‘ø
+                // ËØªÂèñÂä†ÂØÜÁöÑÁßòÈí•
                 string secret = File.ReadAllText(publicpath);
 
-                // ∂¡»°º”√‹µƒ√ÿ‘ø
+                // ËØªÂèñÂä†ÂØÜÁöÑÁßòÈí•
                 string privatekey = File.ReadAllText(privatepath);
 
-                // Ω‚√‹√‹Œƒ
+                // Ëß£ÂØÜÂØÜÊñá
                 string plain = Encryption.RSADecrypt(secret, privatekey);
 
-                // Ω´Ω‚√‹∫Ûµƒ√ÿ‘ø◊™ªªŒ™◊÷∑˚¥Æ
+                // Â∞ÜËß£ÂØÜÂêéÁöÑÁßòÈí•ËΩ¨Êç¢‰∏∫Â≠óÁ¨¶‰∏≤
                 key = plain;
                 return true;
             }
             else
             {
-                MessageBox.Show("»±…Ÿπ´‘ø∫Õ√ÿ‘øŒƒº˛°£", "FunAuthenticator");
+                MessageBox.Show("Áº∫Â∞ëÂÖ¨Èí•ÂíåÁßòÈí•Êñá‰ª∂„ÄÇ", "FunAuthenticator");
                 return false;
             }
         }
