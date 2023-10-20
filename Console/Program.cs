@@ -1,9 +1,11 @@
-﻿using Milimoe.FunGame.Core.Api.Utility;
+using Milimoe.FunGame.Core.Api.Utility;
 
-const string publicpath = "public.key"; // 公钥（密文）文件路径
-const string privatepath = "private.key"; // 私钥文件路径
+const string keypath = "authenticator.key";
+const string publicstring = "----- PUBLIC KEY -----\r\n";
 
 string key = ""; // 验证秘钥
+
+TwoFactorAuthenticator TFA = new();
 
 if (CheckKey())
 {
@@ -59,24 +61,25 @@ void ClearCurrentConsoleLine()
 
 bool CheckKey()
 {
-    if (File.Exists(privatepath) && File.Exists(publicpath))
+    if (File.Exists(keypath))
     {
-        // 读取加密的秘钥
-        string secret = File.ReadAllText(publicpath);
+        // 读取秘钥
+        string encryptedText = File.ReadAllText(keypath);
 
-        // 读取加密的秘钥
-        string privatekey = File.ReadAllText(privatepath);
+        // 拆分
+        if (TwoFactorAuthenticator.SplitKeyFile(encryptedText, out string[] strs))
+        {
+            // 解密密文
+            string plain = Encryption.RSADecrypt(strs[0].Split(publicstring)[1], strs[1]);
 
-        // 解密密文
-        string plain = Encryption.RSADecrypt(secret, privatekey);
-
-        // 将解密后的秘钥转换为字符串
-        key = plain;
-        return true;
+            // 将解密后的秘钥转换为字符串
+            key = plain;
+            return true;
+        }
     }
     else
     {
-        Console.WriteLine("缺少公钥和秘钥文件。");
-        return false;
+        Console.WriteLine("缺少认证文件。");
     }
+    return false;
 }
