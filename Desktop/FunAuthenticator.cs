@@ -44,7 +44,7 @@ namespace Milimoe.FunAuthenticator.Desktop
                 for (int i = 0; i < 10; i++)
                 {
                     Timer.Value = Timer.Value - 1 < 0 ? 0 : (Timer.Value - 1);
-                    await Task.Delay(92);
+                    await Task.Delay(93);
                 }
                 now++;
                 remain = 30 - now < 0 ? 0 : 30 - now;

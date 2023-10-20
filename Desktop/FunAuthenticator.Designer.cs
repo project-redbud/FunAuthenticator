@@ -37,7 +37,7 @@
             // 
             // CodeText
             // 
-            CodeText.Font = new Font("LanaPixel", 36F, FontStyle.Regular, GraphicsUnit.Point);
+            CodeText.Font = new Font("等线 Light", 46F, FontStyle.Regular, GraphicsUnit.Point);
             CodeText.Location = new Point(12, 9);
             CodeText.Name = "CodeText";
             CodeText.Size = new Size(313, 87);
@@ -47,7 +47,7 @@
             // 
             // RemainText
             // 
-            RemainText.Font = new Font("LanaPixel", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RemainText.Font = new Font("等线 Light", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             RemainText.Location = new Point(12, 96);
             RemainText.Name = "RemainText";
             RemainText.Size = new Size(313, 28);
