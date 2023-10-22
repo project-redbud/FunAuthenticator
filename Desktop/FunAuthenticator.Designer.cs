@@ -1,4 +1,4 @@
-﻿namespace Milimoe.FunAuthenticator
+﻿namespace Milimoe.FunAuthenticator.Desktop
 {
     partial class FunAuthenticator
     {
@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FunAuthenticator));
             CodeText = new Label();
-            RemindText = new Label();
+            RemainText = new Label();
             Timer = new ProgressBar();
             SuspendLayout();
             // 
             // CodeText
             // 
-            CodeText.Font = new Font("LanaPixel", 36F, FontStyle.Regular, GraphicsUnit.Point);
+            CodeText.Font = new Font("等线 Light", 46F, FontStyle.Regular, GraphicsUnit.Point);
             CodeText.Location = new Point(12, 9);
             CodeText.Name = "CodeText";
             CodeText.Size = new Size(313, 87);
@@ -43,20 +45,21 @@
             CodeText.Text = "123456";
             CodeText.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // RemindText
+            // RemainText
             // 
-            RemindText.Font = new Font("LanaPixel", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            RemindText.Location = new Point(12, 96);
-            RemindText.Name = "RemindText";
-            RemindText.Size = new Size(313, 28);
-            RemindText.TabIndex = 1;
-            RemindText.Text = "剩余 30 秒";
-            RemindText.TextAlign = ContentAlignment.MiddleCenter;
+            RemainText.Font = new Font("等线 Light", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RemainText.Location = new Point(12, 96);
+            RemainText.Name = "RemainText";
+            RemainText.Size = new Size(313, 28);
+            RemainText.TabIndex = 1;
+            RemainText.Text = "剩余 30 秒";
+            RemainText.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // Timer
+            // Timer1
             // 
             Timer.Location = new Point(12, 127);
-            Timer.Maximum = 30;
+            Timer.Maximum = 300;
+            Timer.Value = 300;
             Timer.Name = "Timer";
             Timer.Size = new Size(313, 23);
             Timer.Step = 1;
@@ -69,9 +72,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(337, 161);
             Controls.Add(Timer);
-            Controls.Add(RemindText);
+            Controls.Add(RemainText);
             Controls.Add(CodeText);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MaximumSize = new Size(353, 200);
+            MinimumSize = new Size(353, 200);
             Name = "FunAuthenticator";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FunAuthenticator";
             ResumeLayout(false);
         }
@@ -79,7 +88,7 @@
         #endregion
 
         private Label CodeText;
-        private Label RemindText;
+        private Label RemainText;
         private ProgressBar Timer;
     }
 }
