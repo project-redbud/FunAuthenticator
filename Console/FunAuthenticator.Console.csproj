@@ -9,7 +9,7 @@
     <RootNamespace>Milimoe.FunAuthenticator.Console</RootNamespace>
     <Authors>Milimoe</Authors>
     <Company>Milimoe</Company>
-    <Title>FunAuthenticator-Console</Title>
+    <Title>FunAuthenticator.Console</Title>
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
 
