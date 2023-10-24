@@ -1,15 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Milimoe.FunAuthenticator</RootNamespace>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Milimoe.FunAuthenticator.Console</RootNamespace>
     <Authors>Milimoe</Authors>
     <Company>Milimoe</Company>
-    <Title>FunAuthenticator-Desktop</Title>
+    <Title>FunAuthenticator.Console</Title>
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
 
